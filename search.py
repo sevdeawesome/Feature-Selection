@@ -1,13 +1,6 @@
-# function featuresearch(data)
-#for i = 1, size(data,2) -1
-import random
-import numpy
-import pandas 
-
-# load data into a dataframe
-data = pandas.read_fwf("small.txt",header=None) 
-# number of features
-num_features = data.iloc[0,1:].size
+import crossvalidation
+from crossvalidation import random
+from crossvalidation import num_features
 
 def accuracy():
     return(random.random())
