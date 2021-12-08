@@ -6,22 +6,24 @@ import pandas
 import time
 
 
-# from numba import vectorize, cuda
-# @vectorize(['float32(float32, float32)'], target='cuda')
+# from numba import jit
+
 
 # load data into a dataframe
-dataframe = pandas.read_fwf("small.txt",header=None) 
-# dataframe = dataframe.iloc[:,: ]
+dataframe = pandas.read_fwf("large.txt",header=None) 
+dataframe = dataframe.iloc[0:1000,: ]
 
 # number of features
 num_features = dataframe.iloc[0,1:].size
 num_instances = dataframe.iloc[0:,0].size
 
+
+# @jit
 def cross_validation_accuracy(data, current_set, feature_to_add):
     this_set = current_set
     # this_set.append(feature_to_add)
     
-    start = time.time()
+    # start = time.time()
 
 
 
@@ -64,8 +66,8 @@ def cross_validation_accuracy(data, current_set, feature_to_add):
         # print("Object " + str(i)  + " is class " + str(label_object_to_classify) + " and its nearest neighbor is " + str(nearest_neighbor_location) + " which is in class " + str(nearest_neighbor_label))
         if(label_object_to_classify == nearest_neighbor_label): 
             num_correctly_classified += 1
-    milliseconds = time.time() - start
-    print(" time 3 " + str(milliseconds))
+    # milliseconds = time.time() - start
+    # print(" time 3 " + str(milliseconds))
     accuracy = num_correctly_classified / num_instances
     return accuracy
 
@@ -115,32 +117,15 @@ def cross_validation_accuracy_remove(data, current_set, feature_to_remove):
 
 
 
-def validator(data, features, feature_to_add):
-    num_correct = 0
-
-    for x in range(num_features):
-        y = x + 1
-        if y not in features and y != feature_to_add:
-            data = data.drop(columns=[y])
-    print(data)
-    for i in range(num_instances):
-        neighbor_class = classifier(data, i)
-        if(neighbor_class == data.iloc[i,0]):
-            num_correct += 1
-    return num_correct / num_instances
-
-def classifier(data, isolated):
-
-
-    for i in range(num_instances):
-        if isolated != i:
-            pass
 
   
 
 
 # # test function
-print(cross_validation_accuracy(dataframe.copy(), [5], 8))
+# print(cross_validation_accuracy(dataframe.copy(), [10,21], 1))
+# print(validator(dataframe, [5], 8))
+
+# validator(dataframe.copy(), [5], 8))
 # print(cross_validation_accuracy_remove(dataframe.copy(), [1,2,3,10], 10))
 # print(dataframe)
 # print(cross_validation_accuracy(dataframe.copy(), [], 5))

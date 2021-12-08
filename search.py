@@ -65,6 +65,6 @@ def backwards_elimination():
 
     
 
-# feature_search()
+feature_search()
 
-backwards_elimination()
+# backwards_elimination()
