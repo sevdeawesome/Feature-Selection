@@ -37,9 +37,34 @@ def feature_search():
 
 
 def backwards_elimination():
-    print("test")
+
+    current_set_of_features = []
+    for i in range(crossvalidation.num_features):
+        current_set_of_features.append(i+1)
+
+    print(current_set_of_features)
 
 
-feature_search()
+    for i in range(1, crossvalidation.num_features + 1):
+        print("On the " + str(i) + "th level of the search tree")
+        feature_to_remove_at_this_level = []
+        best_so_far_accuracy = 0
+        for k in range(1, crossvalidation.num_features + 1):
+            if k in current_set_of_features:
+                acc = crossvalidation.cross_validation_accuracy_remove(crossvalidation.dataframe.copy(), current_set_of_features, k)
+                # acc = accuracy()
+                print("--consider removing the " + str(k) + "th feature with accuracy: " + str(acc))
+                if acc > best_so_far_accuracy:
+                    best_so_far_accuracy = acc
+                    feature_to_remove_at_this_level = k
+                    # print(k)
+        current_set_of_features.remove(feature_to_remove_at_this_level)
+        print("On level " + str(i) + " I removed feature " + str(feature_to_remove_at_this_level) + " to current set WITH accuracy " + str(best_so_far_accuracy) )
+        print(current_set_of_features)
+    
 
+    
 
+# feature_search()
+
+backwards_elimination()
