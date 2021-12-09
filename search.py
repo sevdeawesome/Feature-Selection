@@ -42,7 +42,7 @@ def backwards_elimination():
     for i in range(crossvalidation.num_features):
         current_set_of_features.append(i+1)
 
-    print(current_set_of_features)
+    # print(current_set_of_features)
 
 
     for i in range(1, crossvalidation.num_features + 1):
@@ -65,6 +65,6 @@ def backwards_elimination():
 
     
 
-feature_search()
+# feature_search()
 
-# backwards_elimination()
+backwards_elimination()
