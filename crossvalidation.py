@@ -7,11 +7,14 @@ import time
 
 
 # from numba import jit
+print("Welcome to Sevi's feature detection")
+print("Please enter the name of the text file you'd like to use")
+name = input("ENTER: ")
 
 
 # load data into a dataframe
-dataframe = pandas.read_fwf("large.txt",header=None) 
-dataframe = dataframe.iloc[0:1000,: ]
+dataframe = pandas.read_csv(name,header=None) 
+
 
 # number of features
 num_features = dataframe.iloc[0,1:].size
