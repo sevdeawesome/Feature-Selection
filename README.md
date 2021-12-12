@@ -4,12 +4,9 @@ This is the second assignment in CS170: Introduction to Artificial Intelligence 
 ## Forward Selection
 The first search method, forward selection, works by seeking out relevant features and adding them to the current subset of best features. In the beginning, it loops through every feature to find the one with the highest accuracy. Next, it attempts to add each other feature to the best subset and adds the one which improves the accuracy the most. It continues until it has found the most accurate subset of features. 
 
-![](img/image10.png)
+![](img/image222.png)
 
 Figure 1. Here is an example of forward selection selecting the best feature after testing each addition to the subset. (4 features) 
-
-
-
 
 
 
