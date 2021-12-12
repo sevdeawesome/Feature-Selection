@@ -4,6 +4,7 @@ This is the second assignment in CS170: Introduction to Artificial Intelligence 
 ## Forward Selection
 The first search method, forward selection, works by seeking out relevant features and adding them to the current subset of best features. In the beginning, it loops through every feature to find the one with the highest accuracy. Next, it attempts to add each other feature to the best subset and adds the one which improves the accuracy the most. It continues until it has found the most accurate subset of features. 
 
+![](img/image10.png)
 
 Figure 1. Here is an example of forward selection selecting the best feature after testing each addition to the subset. (4 features) 
 
@@ -12,9 +13,11 @@ Figure 1. Here is an example of forward selection selecting the best feature aft
 
 
 
+![pic](img/image6.png)
 
 Figure 2. The accuracy using forward selection on the small dataset. The peak is using features 5 and 8 yielding 95.8%. Feature 7 may also be a relevant feature, giving an accuracy of 95.2%. The last 4 subsets were omitted for space, but the trend is still visible, with accuracy reaching a maxima with 2 or 3 features, after that there are diminishing returns or just negative returns because the features are irrelevant to the class. 
 
+![pic](img/image2.png)![pic](img/image8.png)
 
 Figure 3. When plotted, it can be seen that the features 5 and 8 clearly have some inter-feature dependence. As opposed to two irrelevant features that don't correlate with each other. 5 vs 8 is plotted on the left, feature 1 vs feature 2 plotted on the right. 
 
@@ -22,6 +25,7 @@ Figure 3. When plotted, it can be seen that the features 5 and 8 clearly have so
 
 
 
+![pic](img/image3.png)
 
 Figure 4. Features 5,8, and 7 also show feature dependence when plotted in 3-D. But 7 does not prove to be worth adding as it’s only loosely relevant to the classes. 
 
@@ -29,6 +33,7 @@ Figure 4. Features 5,8, and 7 also show feature dependence when plotted in 3-D. 
 
 
 
+![pic](img/image5.png)
 
 Figure 5. Forward selection on the large dataset (93). I think that features 10 and 21 produce the highest accuracy, at 97.8%. 46 may also be a relevant feature as [10,21,46] produces an accuracy of 95.5. 
 
@@ -40,11 +45,12 @@ Backward elimination is the opposite of forward selection. Instead of selecting 
 
 With the small dataset, I find the same subset using backwards elimination. Features 5 and 8, giving an accuracy of 95.8%. 
 
+![pic](img/image7.png)
 
 Figure 6. Accuracy by level during backwards elimination (small dataset). The accuracy slowly trends upwards at the beginning. Where irrelevant features are harder to detect. Note: the 4th from last subset, [4,6,7,8] is different from the 4th subset in forward selection ([4,8,7,3]) This is because different features may be dependent on one another in unpredictable ways. An example of this is if features 4 and 5 alone proved to be irrelevant features, but when taken together in a nearest neighbor classifier, a pattern emerges. This is in fact what happened with our datasets.
 
 
-
+![pic](img/image4.png)
 Figure 7. Backwards elimination on the large dataset. Backwards elimination worked to my surprise on the large dataset. It would seem that because of the high number of features, backwards elimination may accidentally remove a relevant feature, but in testing it did not. 
 
 ## Runtime
@@ -63,6 +69,8 @@ I ran my code on a database of Irises. There were 3 classes of iris and 4 featur
 Figure 8. Accuracy by subset on iris data. 
 
 Feature 3 is petal length and feature 4 is petal width. The sepal length (mini green petals under the flower) didn’t seem to be relevant in predicting what type of iris each instance was. Plotting the data shows this as well:
+
+![pic](img/image9.png) ![pic](img/image12.png)
 
 Figure 9. Feature 3 vs Feature 4 on left, feature 1 vs feature 2 on right. This is for the iris data. Purple = Iris Setosa. Yellow = Iris Versicolor and Cyan is Iris Virginica. I apologize for the colors, matplotlib is set to theme the colors to my VSCode theme and it won’t let me change them. 
 
